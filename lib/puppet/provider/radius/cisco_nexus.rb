@@ -3,8 +3,11 @@ require 'cisco_node_utils'
 
 # Basic implementation for the radius type using the Resource API.
 class Puppet::Provider::Radius::CiscoNexus < Puppet::ResourceApi::SimpleProvider
+  def canonicalize(_context, resources)
+    resources
+  end
   # NOTE that we just return default name
-  def get(_context)
+  def get(_context, _names=nil)
     radius = []
     radius << {
       name: 'default'
